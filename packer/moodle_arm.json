@@ -23,11 +23,6 @@
     "associate_public_ip_address": true
   }],
   "provisioners": [
-    {
-      "type": "file",
-      "source": "/Users/kmovchan/Downloads/aws-test.pub",
-      "destination": "/tmp/aws-test.pub"
- },
      {
        "type": "ansible",
        "command": "ansible-playbook",
