@@ -21,7 +21,7 @@ fi
 
 AMI_MOODLE_ID=`echo $ARTIFACT_MOODLE | cut -d ':' -f2`
 echo "Saving moodle ami id  to variables.tf"
-echo 'variable "moodle_ami_id" { default = "'${AMI_MOODLE_ID}'"  s}' >> ./project/variables.tf
+echo 'variable "moodle_ami_id" { default = "'${AMI_MOODLE_ID}'" }' >> ./project/variables.tf
 
 #echo "Prepearing AWS environment by terraform"
 #cd ./prerequisites
