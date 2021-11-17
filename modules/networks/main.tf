@@ -82,7 +82,7 @@ resource "aws_security_group" "alb_box-dev" {
       from_port   = ingress.value
       to_port     = ingress.value
       protocol    = "tcp"
-      cidr_blocks = [local.access_list, "194.44.178.0/24","193.105.219.0/24", "217.9.3.0/24", "185.176.121.0/24"]
+      cidr_blocks = [local.access_list, "194.44.178.0/24","193.105.219.0/24", "217.9.3.0/24", "185.176.121.0/24"] 
     }
   }
 }
@@ -90,8 +90,8 @@ resource "aws_security_group" "alb_box-dev" {
 #-------  Security Group for internal NLB
 resource "aws_security_group" "alb_vpl" {
   #    name = "${var.name}-load-balancer"
-  name        = "vpl-internal-load-balancer"
-  description = "allow HTTP/HTTPS to VPL Load Balancer (NLB)"
+  name        = "vpl-load-balancer"
+  description = "allow HTTP/HTTPS to VPL Load Balancer (ALB)"
   vpc_id      = aws_vpc.main.id
   # Allow all outbound
   egress {
@@ -106,7 +106,7 @@ resource "aws_security_group" "alb_vpl" {
       from_port   = ingress.value
       to_port     = ingress.value
       protocol    = "tcp"
-      cidr_blocks = [var.vpc_cidr]
+      cidr_blocks = [var.vpc_cidr, "0.0.0.0/0"]
     }
   }
 }
@@ -122,7 +122,6 @@ resource "aws_security_group" "glusterfs" {
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = [var.vpc_cidr]
-    #cidr_blocks = [data.aws_vpc.default.cidr_block]
   }
 
   egress {
@@ -153,13 +152,6 @@ resource "aws_security_group" "vpl-dev" {
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = [var.vpc_cidr]
-  }
-
-  ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = [local.access_list]
   }
 
   egress {

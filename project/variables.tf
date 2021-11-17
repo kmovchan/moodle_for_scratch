@@ -1,6 +1,5 @@
 variable "region" {
   description = "AWS Region where to provision VPC Network"
-  #default     = "eu-central-1"
   default     = "eu-west-1"
 }
 
