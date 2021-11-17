@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "Start building VPL ami instance"
+echo "Start building VPL AMI instance"
 if packer build -machine-readable ./packer/vpl.json > out.txt
  then 
      echo "VPL AMI instance is created"
@@ -7,8 +7,10 @@ if packer build -machine-readable ./packer/vpl.json > out.txt
   echo "Packer can't compile ami for VPL" && exit 1
 fi
 
-echo "Start building Moodle ami instance"
+echo "Start building Moodle AMI ARM instance"
 if packer build -machine-readable ./packer/moodle_arm.json > outmod.txt
+#echo "Start building Moodle AMI Intel instance"
+#if packer build -machine-readable ./packer/moodle_intel.json > outmod.txt
   then
       echo "Moodle AMI inctance is created"
   else
