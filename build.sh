@@ -1,4 +1,9 @@
 #!/bin/bash
+if [ "$UID" == "0" ] && [ "$EUID" == "0" ];
+ then
+    echo "Please do not run this script as root;"
+        exit 1;
+fi
 echo "Start building VPL AMI instance"
 if packer build -machine-readable ./packer/vpl.json > out.txt
  then 
