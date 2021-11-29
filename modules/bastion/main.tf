@@ -25,7 +25,7 @@ resource "aws_instance" "bastion" {
   ami = data.aws_ami.latest_ubuntu.id
   #subnet_id = var.private_subnet_ids[0]
   subnet_id              = var.public_subnet_id
-  instance_type          = "t2.micro"
+  instance_type          = "t3.micro"
   vpc_security_group_ids = [var.bastion_security_group_id]
   key_name               = var.key_name
   user_data              = data.template_file.bastion_data.rendered
