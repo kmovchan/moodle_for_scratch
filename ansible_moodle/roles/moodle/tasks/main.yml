@@ -11,18 +11,13 @@
 
   - name: Install nginx and dependencies
     apt:
-      name: "{{ item }}"
+      name:
+        - nginx
+        - nginx-extras
+        - glusterfs-client
+        - acl
+        - collectd
       state: present
-      update_cache: yes
-      cache_valid_time: 3600
-      dpkg_options: 'force-confnew,force-confdef'
-    with_items:
-     - nginx
-     - nginx-extras
-     - glusterfs-client
-     - acl
-     - net-tools
-     - collectd
     notify: restart nginx
 
   - name: Delete example site and legacy configs
@@ -37,22 +32,21 @@
 
   - name: Install php and dependencies
     apt:
-      name: "{{ item }}"
+      name:
+        - php7.4
+        - php7.4-fpm
+        - php7.4-pspell
+        - php7.4-curl
+        - php7.4-gd
+        - php7.4-intl
+        - php7.4-mysql
+        - php7.4-xml
+        - php7.4-xmlrpc
+        - php7.4-mbstring
+        - php7.4-soap
+        - php7.4-zip
+        - php7.4-redis
       state: present
-    with_items:
-     - php7.4
-     - php7.4-fpm
-     - php7.4-pspell
-     - php7.4-curl
-     - php7.4-gd
-     - php7.4-intl
-     - php7.4-mysql
-     - php7.4-xml
-     - php7.4-xmlrpc
-     - php7.4-mbstring
-     - php7.4-soap
-     - php7.4-zip
-     - php7.4-redis
     notify: restart php7.4-fpm
 
 
