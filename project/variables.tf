@@ -42,8 +42,8 @@ variable "create_key_pair" {
 
 variable "instance_type" {
   description = "Moodle aim type"
-  default     = "t3.medium"
-  #default     = "t4g.medium"
+  default     = "t3.xlarge"
+  #default     = "m6g.xlarge"
 }
 
 variable "vpl_instance_type" {
