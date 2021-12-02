@@ -5,7 +5,7 @@ if [ "$UID" == "0" ] && [ "$EUID" == "0" ];
         exit 1;
 fi
 echo "Start building VPL AMI instance"
-if packer build -machine-readable ./packer/vpl.json > out.txt
+if packer build -machine-readable ./packer/vpl.json > vplout.txt
  then 
      echo "VPL AMI instance is created"
  else 
@@ -15,7 +15,7 @@ fi
 #echo "Start building Moodle AMI ARM instance"
 #if packer build -machine-readable ./packer/moodle_arm.json > outmod.txt
 echo "Start building Moodle AMI Intel instance"
-if packer build -machine-readable ./packer/moodle_intel.json > outmod.txt
+if packer build -machine-readable ./packer/moodle_intel.json > moodleout.txt
   then
       echo "Moodle AMI inctance is created"
   else
