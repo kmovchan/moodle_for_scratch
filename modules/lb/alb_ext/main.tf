@@ -4,8 +4,6 @@ data "aws_ami" "latest_image_moodle" {
   most_recent = true
   filter {
     name = "name" 
-    #values = ["ubuntu2004-moodle389-new"]
-    #values = ["moodle-server-arm*"]
     values = [var.ami_name]
   }
 }
