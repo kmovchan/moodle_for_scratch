@@ -239,7 +239,7 @@ resource "aws_alb_target_group" "boxui" {
     port     = "80"
     protocol = "HTTP"
     interval = "60"
-    matcher  = "200-301"
+    matcher  = "200-303"
     timeout  = "10"
   }
 

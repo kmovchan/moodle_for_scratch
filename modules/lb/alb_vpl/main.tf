@@ -108,7 +108,7 @@ resource "aws_lb_target_group" "vpl-target" {
     port     = "80"
     protocol = "HTTP"
     interval = "60"
-    matcher  = "200-301"
+    matcher  = "200-303"
     timeout  = "10"
   }
 
