@@ -5,11 +5,9 @@ data "http" "my_ip" {
 }
 
 locals {
-  #access_list = {
-  #  my_ip = "${chomp(data.http.my_ip.body)}/32"
   access_list = "${chomp(data.http.my_ip.body)}/32"
-  #}
 }
+
 data "aws_availability_zones" "available" {}
 
 
