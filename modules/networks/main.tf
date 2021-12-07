@@ -80,7 +80,7 @@ resource "aws_security_group" "alb_box-dev" {
       from_port   = ingress.value
       to_port     = ingress.value
       protocol    = "tcp"
-      cidr_blocks = [local.access_list, "194.44.178.0/24","193.105.219.0/24", "217.9.3.0/24", "185.176.121.0/24"] 
+      cidr_blocks = ["0.0.0.0/0"] 
     }
   }
 }
