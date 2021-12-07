@@ -1,3 +1,3 @@
-#Deployment Moodle on AWS
+# Deployment Moodle on AWS
 
 ![](images/moodle-architecture.png)
