@@ -117,7 +117,6 @@ resource "aws_autoscaling_group" "box-asg" {
   min_size             = 2
   max_size             = 10
   health_check_type    = "EC2"
-  force_delete         = true
   termination_policies = ["NewestInstance"]
   vpc_zone_identifier  = var.private_subnet_ids
   #vpc_zone_identifier = [aws_subnet.public_subnets[0].id, aws_subnet.public_subnets[1].id]
