@@ -7,13 +7,14 @@
     with_items:
        - "ppa:ondrej/nginx"
        - "ppa:ondrej/php"
-       - "ppa:gluster/glusterfs-7"
+       - "ppa:gluster/glusterfs-10"
 
   - name: Install nginx and dependencies
     apt:
       name:
         - nginx
         - nginx-extras
+        - libtcmalloc-minimal4
         - glusterfs-client
         - acl
         - collectd

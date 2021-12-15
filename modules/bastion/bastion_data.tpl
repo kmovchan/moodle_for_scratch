@@ -7,11 +7,13 @@ echo "$ip_node02 node02"  >> /etc/hosts;
 echo [gluster]  >> /home/ubuntu/hosts;
 echo "$ip_node01"  >> /home/ubuntu/hosts;
 echo "$ip_node02"  >> /home/ubuntu/hosts;
+sudo apt-add-repository -y ppa:ansible/ansible
 sudo apt-get update
-sudo apt-get install -y git ansible mysql-client
+sudo apt-get install -y ansible mysql-client
 
 mkdir /home/ubuntu/roles
 sudo ansible-galaxy install geerlingguy.glusterfs --roles-path=/home/ubuntu/roles
+sed -ie "s/7/10/g" /home/ubuntu/roles/geerlingguy.glusterfs/defaults/main.yml
 cat <<EOF > /home/ubuntu/gluster.sh
 #!/bin/bash
 export ANSIBLE_HOST_KEY_CHECKING=False; ansible-playbook -u ubuntu --private-key /home/ubuntu/aws-test.pem  -i /home/ubuntu/hosts /home/ubuntu/gluster.yml --extra-vars "ip_node=${ip_node01}"

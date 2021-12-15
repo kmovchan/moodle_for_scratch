@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  sudo: yes
+  become: yes
 
   vars:
     gluster_mount_dir: /glusterfs
