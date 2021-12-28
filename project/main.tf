@@ -1,18 +1,15 @@
 provider "aws" {
-  region = var.region
 }
 
-/*
 terraform {
   backend "s3" {
     encrypt = true
-    bucket = "moodle-tf-state-stage"
-    dynamodb_table = "moodle-tfstatelock-stage"
-    region = "eu-central-1"
+    bucket = "moodle-tf-state-stage2"
+    dynamodb_table = "moodle-tfstatelock-stage2"
     key = "moodle/terraform.tfstate"
   }
 }
-*/
+
 module "key-pair" {
   source = "../modules/keys"
   key_name        = var.key_name

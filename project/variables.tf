@@ -1,8 +1,3 @@
-variable "region" {
-  description = "AWS Region where to provision VPC Network"
-  default     = "eu-west-1"
-}
-
 variable "env" {
   default = "stage"
 }
@@ -42,8 +37,8 @@ variable "create_key_pair" {
 
 variable "instance_type" {
   description = "Moodle aim type"
-  default     = "t3.xlarge"
-  #default     = "m6g.xlarge"
+  #default     = "t3.xlarge"
+  default     = "m6g.xlarge"
 }
 
 variable "vpl_instance_type" {
@@ -74,5 +69,6 @@ variable "vpl_ami_name" {
   default = "vpl-server*" 
   }
 variable "moodle_ami_name" { 
+  #default = "moodle-server-arm*"
   default = "moodle-server*"
 }

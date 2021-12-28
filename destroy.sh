@@ -3,10 +3,14 @@ echo "Starting to destroy AWS environment by terraform"
 cd ./project
 terraform destroy -auto-approve
 
+echo "Starting to destroy S3 bucket by terraform"
+cd ../prerequisites
+terraform destroy -auto-approve
+
 echo "Starting to delete ami images and snapshots"
 
-IMAGE_ID=$(aws ec2 describe-images --region eu-west-1 --owners "self" --filters Name=name,Values="moodle-server*" --query 'Images[*].ImageId' --output text)
-IMAGE_VPL_ID=$(aws ec2 describe-images --region eu-west-1 --owners "self" --filters Name=name,Values="vpl-server*" --query 'Images[*].ImageId' --output text)
+IMAGE_ID=$(aws ec2 describe-images --region $AWS_DEFAULT_REGION --owners "self" --filters Name=name,Values="moodle-server*" --query 'Images[*].ImageId' --output text)
+IMAGE_VPL_ID=$(aws ec2 describe-images --region $AWS_DEFAULT_REGION --owners "self" --filters Name=name,Values="vpl-server*" --query 'Images[*].ImageId' --output text)
 SNAPSHOTS_ID=$(aws ec2 describe-snapshots --filters Name=tag:Name,Values="Packer Builder" --output text | cut -f 6)
 ALL="$IMAGE_ID $IMAGE_VPL_ID"
 echo $SNAPSHOTS_ID

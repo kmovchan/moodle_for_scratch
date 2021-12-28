@@ -1,10 +1,5 @@
-variable "region" {
-  description = "Region"
-  default     = "eu-west-1"
-  #default = "eu-central-1"
-}
 variable "aws_moodle_bucket" {
-    default = "moodle-tf-state"
+    default = "moodle-tf-state-stage2"
 }
 variable "aws_networking_bucket" {
     default = "moodle-networking"
@@ -13,13 +8,12 @@ variable "aws_application_bucket" {
     default = "moodle-application"
 }
 variable "aws_dynamodb_table" {
-    default = "moodle-tfstatelock"
+    default = "moodle-tfstatelock-stage2"
 }
-
 
 provider "aws" {
-  region = var.region
 }
+
 resource "aws_dynamodb_table" "moodle_statelock" {
   name           = var.aws_dynamodb_table
   read_capacity  = 20
