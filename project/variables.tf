@@ -69,6 +69,6 @@ variable "vpl_ami_name" {
   default = "vpl-server*" 
   }
 variable "moodle_ami_name" { 
-  #default = "moodle-server-arm*"
-  default = "moodle-server*"
+  default = "moodle-server-arm*"
+  #default = "moodle-server*"
 }
